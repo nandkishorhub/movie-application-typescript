@@ -1,0 +1,75 @@
+@import "../../common/colors.scss";
+
+.header {
+  background: $secondary-color;
+  height: 70px;
+  display: flex;
+  padding: 0 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: $font-primary;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.logo a {
+  color: whitesmoke;
+}
+
+.user-image,
+.user-image img {
+  width: 38px;
+  height: 38px;
+}
+
+.search-bar {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 70%;
+    button {
+      padding: 3px 10px;
+      font-size: 20px;
+      cursor: pointer;
+      height: 35px;
+      border-radius: 5px;
+      outline: none;
+    }
+    input {
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 20px;
+      width: 100%;
+      height: 35px;
+      outline: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 560px){
+  .header {
+    width: 100%;
+    height: 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap:10px;
+  }
+
+  .search-bar {
+    width: 100%;
+    form {
+      width: 100%;
+    }
+  }
+}
+
+ 
+
