@@ -4,6 +4,7 @@ export const handlers = [
   http.get(
     "https://www.omdbapi.com/?apiKey=4428c013&s=Harry&type=movie",
     async () => {
+      console.log("handler...........")
       await delay(150);
       return HttpResponse.json({
         Search: [

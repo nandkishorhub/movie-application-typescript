@@ -3,9 +3,7 @@ module.exports = {
   //   transform: {
   //     "^.+\\.tsx?$": "ts-jest",
   //   },
-  setupFilesAfterEnv: [
-    '<rootDir>/jest.env.js',
-  ],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   transform: {
     "^.+\\.tsx?$": "@swc/jest",
   },

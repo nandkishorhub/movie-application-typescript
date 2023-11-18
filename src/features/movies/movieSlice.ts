@@ -16,11 +16,10 @@ const initialState: InitialState = {
 export const fetchMoviesAsync = createAsyncThunk<nestedMovieObj, any>(
   "movies/fetchMoviesAsync",
   async (term: string, thunkAPI) => {
-    console.log("term movies", term);
     const response = await movieApi.get(
       `?apiKey=${APIKey}&s=${term}&type=movie`
     );
-
+    console.log("term movies", term);
     return response.data;
   }
 );
@@ -28,7 +27,6 @@ export const fetchMoviesAsync = createAsyncThunk<nestedMovieObj, any>(
 export const fetchShowsAsync = createAsyncThunk<nestedMovieObj, any>(
   "movies/fetchShowsAsync",
   async (term: string, thunkAPI) => {
-    console.log("term shows", term);
     const response = await movieApi.get(
       `?apiKey=${APIKey}&s=${term}&type=series`
     );
