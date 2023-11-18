@@ -1,12 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, PreloadedState, combineReducers} from "@reduxjs/toolkit";
 import movieReducer from "./movies/movieSlice";
 
-export const store = configureStore({
-  reducer: {
-    movies: movieReducer,
-  },
-});
+const rootReducer = combineReducers({
+  movies: movieReducer
+})
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof  store.getState>;
 
+export function setupStore(preloadedState?: PreloadedState<RootState>) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}
+
+ 
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch'];
+export type RootState = ReturnType<typeof rootReducer>;

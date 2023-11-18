@@ -16,7 +16,7 @@ const initialState: InitialState = {
 export const fetchMoviesAsync = createAsyncThunk<nestedMovieObj, any>(
   "movies/fetchMoviesAsync",
   async (term: string, thunkAPI) => {
-    console.log("term movie", term);
+    console.log("term movies", term);
     const response = await movieApi.get(
       `?apiKey=${APIKey}&s=${term}&type=movie`
     );
@@ -28,11 +28,10 @@ export const fetchMoviesAsync = createAsyncThunk<nestedMovieObj, any>(
 export const fetchShowsAsync = createAsyncThunk<nestedMovieObj, any>(
   "movies/fetchShowsAsync",
   async (term: string, thunkAPI) => {
-    // console.log("term shows", term);
+    console.log("term shows", term);
     const response = await movieApi.get(
       `?apiKey=${APIKey}&s=${term}&type=series`
     );
-    console.log("res", term, response);
     return response.data;
   }
 );
@@ -72,7 +71,7 @@ const movieSlice = createSlice({
       (state, action: PayloadAction<nestedMovieObj>) => {
         state.movies = action.payload;
         state.movieStatus = "resolved";
-
+        console.log("Res.......", action.payload);
         return state;
       }
     );
@@ -113,8 +112,9 @@ export const getMovieStatus = (state: RootState): string =>
   state.movies.movieStatus;
 export const getShowsStatus = (state: RootState): string =>
   state.movies.showStatus;
-export const getMovieOrShowDetails = (state: RootState):  MovieOrShowDetails | {} =>
-  state.movies.movieOrShowDetail;
+export const getMovieOrShowDetails = (
+  state: RootState
+): MovieOrShowDetails | {} => state.movies.movieOrShowDetail;
 
 export const { removeMovieOrShowDetail, movieDetail, ShowDetail } =
   movieSlice.actions;
